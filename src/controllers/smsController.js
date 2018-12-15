@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 router.post('/send', async (req, res) => {
   try {
     const sms = await Sms.create(req.body);
-    return res.send({ sms });
+    return res.send({ body: sms, protocol: sms.protocol });
   } catch (error) {
     return res.status(400).send({ error: 'Error sending, please try again' });
   }
