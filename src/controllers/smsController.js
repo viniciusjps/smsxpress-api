@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
 
 router.post('/send', async (req, res) => {
   try {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const sms = await Sms.create(req.body);
     return res.send({ sms });
   } catch (error) {
